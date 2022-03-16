@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .perfect{
+        background-color: green;
+    }
+    .wrong{
+        background-color: red;
+    }
+</style>
+<body>
+    <div class="container"></div>
+        <h1>Welcome to the Great Number Game!</h1>
+        <h2>I am thinking of a number between 1 and 100!</h2>
+
+        <h4>Can you guess it?</h4>
+
+        <form action="/process_guess" method="post">
+            
+            <p>Your Guess: </p>
+            <input type="number" class="form-control" name="guess">
+            <input type="submit" value="Press here to guess!">
+
+        </form>
+
+        {% if session['comparison'] == "perfect" %}
+        <div >
+            <h2 class="perfect">You got it!</h2>
+        </div>
+        {% else %}
+        <div>
+            <h2 class="wrong">Your guess is {{ session['comparison'] }}!</h2>
+        </div>
+        {% endif %}
+
+        <a href="/reset"> Reset</a>
+</body>
+</html>
